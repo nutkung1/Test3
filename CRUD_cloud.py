@@ -3,7 +3,8 @@ import psycopg2
 
 st.title("Hello")
 connection_string = st.secrets.db_credentials.DATABASE_URL
-connection = psycopg2.connect(connection_string, sslmode='disable')  # Disable server certificate verification
+connection = psycopg2.connect(connection_string, sslmode='verify-full', sslrootcert='/path/to/root.crt')
+
 cursor = connection.cursor()
 
 create_table = "CREATE TABLE IF NOT EXISTS farmer(id int PRIMARY KEY, name varchar(20));"
