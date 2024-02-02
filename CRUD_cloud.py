@@ -1,7 +1,7 @@
 import streamlit as st
 import psycopg2
 st.title("Hello")
-connection_string = st.secrets.db_credentials.db_url
+connection_string = st.secrets.db_credentials.DATABASE_URL
 # print(st.secrets.db_credentials.db_url)
 connection = psycopg2.connect(connection_string)
 cursor = connection.cursor()
