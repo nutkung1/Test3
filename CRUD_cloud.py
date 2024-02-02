@@ -3,7 +3,8 @@ import psycopg2
 st.title("Hello")
 connection_string = st.secrets.db_credentials.DATABASE_URL
 # print(st.secrets.db_credentials.db_url)
-connection = psycopg2.connect(connection_string)
+connection = psycopg2.connect(connection_string, sslmode='verify-ca', sslrootcert='path/to/root.crt', echo=True)
+
 cursor = connection.cursor()
 create_table = "CREATE TABLE IF NOT EXISTS farmer(id int PRIMARY KEY, name varchar(20));"
 cursor.execute(create_table)
@@ -21,4 +22,3 @@ rows = cursor.fetchall()
 for row in rows:
     st.write(row)
 print("Success")
-
