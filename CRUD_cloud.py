@@ -3,7 +3,7 @@ import psycopg2
 
 st.title("Hello")
 connection_string = st.secrets.db_credentials.DATABASE_URL
-connection = psycopg2.connect(connection_string, sslmode='verify-full', sslrootcert='/path/to/root.crt')
+connection = psycopg2.connect(connection_string, sslmode='verify-full')
 
 cursor = connection.cursor()
 
